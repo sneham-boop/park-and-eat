@@ -2,9 +2,11 @@ import Map from "./components/Map";
 import { useContext } from "react";
 import "./App.css";
 import { authContext } from "./providers/AuthProvider";
+import { userContext } from "./providers/UserProvider";
 
 function App() {
   const { auth } = useContext(authContext);
+  const { user } = useContext(userContext);
   return (
     <div className="App">
       <div>Welcome to PARKEATS.</div>
@@ -13,6 +15,8 @@ function App() {
       ) : (
         <p>Please log in to proceed.</p>
       )}
+
+      {user && <h3>Welcome, {user.firstname}</h3>}
       <Map />
     </div>
   );

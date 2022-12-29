@@ -7,7 +7,7 @@ export default function AuthProvider(props) {
 
   // Default state change to authenticated prior to backend setup.
   useEffect(() => {
-    setAuth(false);
+    setAuth(true);
   }, []);
 
   const data = { auth };

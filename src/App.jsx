@@ -1,12 +1,16 @@
 import Map from "./components/Map";
 import { useContext } from "react";
-import "./App.css";
+import "./App.scss";
 import { authContext } from "./providers/AuthProvider";
 import { userContext } from "./providers/UserProvider";
 
 function App() {
-  const { auth } = useContext(authContext);
+  const { auth, login, logout } = useContext(authContext);
   const { user } = useContext(userContext);
+  const handleClick = () => {
+    
+  }
+
   return (
     <div className="App">
       <div>Welcome to PARKEATS.</div>

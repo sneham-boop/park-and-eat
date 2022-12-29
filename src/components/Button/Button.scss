@@ -1,0 +1,21 @@
+@import "../../sass/global";
+
+.button-default {
+  min-width: 4em;
+  padding: 0.3em 0.5em;
+  font-family: $work-font-family;
+  font-size: $font-size-p-sm;
+  font-weight: $extra-thin;
+  border: 1px solid;
+  border-radius: 0.375rem;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5em;
+  transition: width 0.3s, border-radius 0.3s;
+  &:hover {
+    cursor: pointer;
+    border-radius: 1rem;
+  }
+}

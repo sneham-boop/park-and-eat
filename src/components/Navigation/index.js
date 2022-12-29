@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext } from "react";
 import Button from "../Button";
 import Logo from "./Logo";
 import { authContext } from "../../providers/AuthProvider";

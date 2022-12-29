@@ -5,9 +5,9 @@ import "./Footer.scss";
 export default function Footer() {
   const btnText = "GO UP";
   const handleScroll = () => {
-    const element = document.getElementsByClassName("home");
+    const element = document.getElementsByClassName("nav");
     if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
+      element[0].scrollIntoView({ behavior: "smooth" });
     }
   };
 

@@ -2,7 +2,10 @@
 
 .home {
   padding: 0 1em;
+  background-color: $white;
+  height: 100vh;
   h3 {
+    margin: 0;
     font-size: $font-size-h4;
     font-weight: $thin;
   }

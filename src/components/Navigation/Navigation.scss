@@ -1,9 +1,14 @@
 @import "../../sass/global";
 
 .nav {
+  width: 100vw;
+  position: fixed;
+  top: 0px;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  background-color: $gray;
+  color: $white;
   padding: 0.5em 1em;
   .logo {
     font-size: $font-size-p-m;

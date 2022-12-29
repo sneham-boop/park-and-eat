@@ -8,7 +8,7 @@ export default function Home() {
   return (
     <section className="home">
       {user ? (
-        <h3>Welcome, {user.firstname}</h3>
+        <h3>Welcome, {user.firstname}!</h3>
       ) : (
         <h3>Welcome! Please log in to continue.</h3>
       )}

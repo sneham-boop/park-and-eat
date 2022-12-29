@@ -4,6 +4,7 @@ import "./index.css";
 import App from "./App";
 import AuthProvider from "./providers/AuthProvider";
 import UserProvider from "./providers/UserProvider";
+import "normalize.css";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(

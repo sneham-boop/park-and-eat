@@ -1,4 +1,5 @@
 import Map from "./components/Map";
+import Navigation from "./components/Navigation";
 import { useContext } from "react";
 import "./App.scss";
 import { authContext } from "./providers/AuthProvider";
@@ -7,12 +8,9 @@ import { userContext } from "./providers/UserProvider";
 function App() {
   const { auth, login, logout } = useContext(authContext);
   const { user } = useContext(userContext);
-  const handleClick = () => {
-    
-  }
 
   return (
-    <div className="App">
+    <div className="app">
       <div>Welcome to PARKEATS.</div>
       {auth ? (
         <p>You have been authenticated.</p>

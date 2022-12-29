@@ -10,7 +10,15 @@ export default function AuthProvider(props) {
     setAuth(true);
   }, []);
 
-  const data = { auth };
+  const login = () => {
+    setAuth(true);
+  }
+
+  const logout = () => {
+    setAuth(false);
+  }
+
+  const data = { auth, login, logout };
 
   return (
     <authContext.Provider value={data}>{props.children}</authContext.Provider>

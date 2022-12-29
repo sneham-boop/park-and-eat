@@ -5,11 +5,6 @@ export const authContext = createContext();
 export default function AuthProvider(props) {
   const [auth, setAuth] = useState(false);
 
-  // Default state change to authenticated prior to backend setup.
-  useEffect(() => {
-    setAuth(true);
-  }, []);
-
   const login = () => {
     setAuth(true);
   }

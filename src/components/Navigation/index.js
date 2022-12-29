@@ -1,20 +1,20 @@
-import React from "react";
+import React, { useContext, useState } from "react";
 import Button from "../Button";
 import Logo from "./Logo";
+import { authContext } from "../../providers/AuthProvider";
 import "./Navigation.scss";
 
 export default function Navigation(props) {
+  const { auth, login, logout } = useContext(authContext);
+  const btnText = auth ? "Logout" : "Login";
   const handleClick = () => {
-    
-  }
+    auth ? logout() : login();
+  };
+
   return (
     <nav className="nav">
-      <a href="#">
-        <Logo />
-      </a>
-      <a href="#">HOME</a> |<a href="#">SOME</a> |<a href="#">LINK</a> |
-      <a href="#">LINKS</a>
-      <Button btnText="Login" onClick={handleClick} />
+      <Logo />
+      <Button btnText={btnText} onClick={handleClick} />
     </nav>
   );
 }

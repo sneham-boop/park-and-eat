@@ -3,21 +3,21 @@ import React from "react";
 
 export default function AutoComplete(props) {
   const myKey = process.env.REACT_APP_MAP_API_KEY;
-  const { setAddress, setCalc } = props;
+  const { setAddress } = props;
   const { ref: locationRef } = usePlacesWidget({
     apiKey: myKey,
     onPlaceSelected: (place) => {
-      setAddress(
-        place.formatted_address,
-        place.geometry.location.lat(),
-        place.geometry.location.lng()
-      );
-      // setCalc(true);
+      // setAddress(
+      //   place.formatted_address,
+      //   place.geometry.location.lat(),
+      //   place.geometry.location.lng()
+      // );
+      console.log(place)
     },
     options: {
-      types: ["park"],
+      types: ["parking"],
       componentRestrictions: { country: "ca" },
-      fields: ["name", "formatted_address", "geometry"],
+      // fields: ["name", "formatted_address", "geometry"],
     },
     inputAutocompleteValue: "text",
   });

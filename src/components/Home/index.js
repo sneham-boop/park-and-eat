@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import Map from "../Map";
+// import Map from "../Map";
 import "./Home.scss";
 import { userContext } from "../../providers/UserProvider";
 import Search from "../Search";
@@ -14,7 +14,7 @@ export default function Home() {
         <h3>Welcome! Please log in to continue.</h3>
       )}
       <Search/>
-      <Map />
+      {/* <Map /> */}
     </section>
   );
 }

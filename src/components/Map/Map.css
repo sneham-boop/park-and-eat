@@ -28,3 +28,9 @@
 .hover {
   background-color: #0078d4;
 }
+
+
+.places-container {
+  height: 500px;
+  width: 50vw;
+}

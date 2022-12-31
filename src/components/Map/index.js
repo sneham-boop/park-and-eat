@@ -4,12 +4,14 @@ import GoogleMapReact from "google-map-react";
 import Markers from "./Markers";
 import "./Map.css";
 import useLocalStorage from "../../hooks/useLocalStorage";
+import ShowPlaces from "./ShowPlaces";
 
 export default function Map() {
   const { getLocalStorage, setLocalStorage } = useLocalStorage();
   const zoom = 10;
   const defaultLocation = { lat: 43.6532, lng: -79.3832 };
   const myKey = process.env.REACT_APP_MAP_API_KEY;
+  const [placesSearched, setPlacesSearched] = useState([]);
   const [location, setLocation] = useState(
     getLocalStorage("location") || defaultLocation
   );
@@ -22,14 +24,15 @@ export default function Map() {
     });
   }, [setLocalStorage]);
 
+  // Runs after Maps API is loaded
   const handleApiLoaded = (map, maps) => {
     // Bound search box feature to input element with options
     const input = ReactDOM.findDOMNode(searchInputRef.current);
     const options = {
-      fields: ["formatted_address", "geometry", "name"],
-      strictBounds: false,
       types: ["park"],
       componentRestrictions: { country: "ca" },
+      fields: ["name", "formatted_address", "geometry"],
+      radius: 1000,
     };
     const searchBox = new maps.places.SearchBox(input, options);
 
@@ -44,7 +47,10 @@ export default function Map() {
       if (places.length === 0) {
         return;
       }
-
+      // setPlacesSearched((prev)=>{
+      //   const newPlaces = [...places];
+      //   prev = [newPlaces];
+      // });
       // Clear out the old markers.
       markers.forEach((marker) => {
         marker.setMap(null);
@@ -59,7 +65,10 @@ export default function Map() {
           console.log("Returned place contains no geometry");
           return;
         }
-
+        setPlacesSearched((prev) => {
+          const oldPlaces = [...prev];
+          return [...oldPlaces, place];
+        });
         const icon = {
           url: place.icon,
           size: new maps.Size(71, 71),
@@ -83,63 +92,16 @@ export default function Map() {
         } else {
           bounds.extend(place.geometry.location);
         }
-        console.log(place);
-        // const request = {
-        //   placeId: place.placeId,
-        //   fields: ["name", "formatted_address", "place_id", "rating"],
-        // };
-        // showDetailsOnPage(request);
       });
       map.fitBounds(bounds);
     };
     searchBox.addListener("places_changed", onPlacesChanged);
-
-    // Retreiving details for search results.
-    // const showDetailsOnPage = (request) => {
-    //   // const request = {
-    //   //   placeId: "ChIJN1t_tDeuEmsRUsoyG83frY4",
-    //   //   fields: ["name", "formatted_address", "place_id", "geometry"],
-    //   // };
-    //   const infowindow = new maps.InfoWindow();
-    //   const service = new maps.places.PlacesService(map);
-    //   service.getDetails(request, (place, status) => {
-    //     if (
-    //       status === maps.places.PlacesServiceStatus.OK &&
-    //       place &&
-    //       place.geometry &&
-    //       place.geometry.location
-    //     ) {
-    //       const marker = new maps.Marker({
-    //         map,
-    //         position: place.geometry.location,
-    //       });
-
-    //       maps.event.addListener(marker, "click", () => {
-    //         const content = document.createElement("div");
-    //         const nameElement = document.createElement("h2");
-
-    //         nameElement.textContent = place.name;
-    //         content.appendChild(nameElement);
-
-    //         const placeIdElement = document.createElement("p");
-
-    //         placeIdElement.textContent = place.place_id;
-    //         content.appendChild(placeIdElement);
-
-    //         const placeAddressElement = document.createElement("p");
-
-    //         placeAddressElement.textContent = place.formatted_address;
-    //         content.appendChild(placeAddressElement);
-    //         infowindow.setContent(content);
-    //         infowindow.open(map, marker);
-    //       });
-    //     }
-    //   });
-    // };
-
-    //
   };
 
+  // Print places when new places are found.
+  useEffect(() => {
+    // console.log("I found these!", placesSearched);
+  }, [placesSearched]);
   return (
     <>
       <div className="map-container">
@@ -169,6 +131,9 @@ export default function Map() {
             placeholder="Where do you want to park?"
             autoComplete="text"
           />
+          {placesSearched.length !== 0 && (
+            <ShowPlaces places={placesSearched} />
+          )}
         </div>
       </div>
     </>

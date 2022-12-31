@@ -2,7 +2,7 @@ import React, { useEffect, useState, useRef } from "react";
 import ReactDOM from "react-dom";
 import GoogleMapReact from "google-map-react";
 import Markers from "./Markers";
-import "./Map.css";
+import "./Map.scss";
 import useLocalStorage from "../../hooks/useLocalStorage";
 import ShowPlaces from "./ShowPlaces";
 

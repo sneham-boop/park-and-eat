@@ -1,6 +1,4 @@
 import React, { useEffect, useRef } from "react";
-// import ReactDOM from "react-dom";
-// import Place from "./Place";
 
 const ShowPlaces = ({ places }) => {
   const divDisplayResults = useRef(null);
@@ -27,7 +25,7 @@ const ShowPlaces = ({ places }) => {
   return (
     <div className="places-container">
       <h3>We found these for you!</h3>
-      <div ref={divDisplayResults}></div>
+      <div className="places" ref={divDisplayResults}></div>
     </div>
   );
 };

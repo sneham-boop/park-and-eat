@@ -1,8 +1,9 @@
+@import "../../sass/global";
+
 .map {
   width: 50vw;
   height: 50vh;
 }
-
 
 .circle {
   /* background-color: #d83b01; */
@@ -27,4 +28,23 @@
 
 .hover {
   background-color: #0078d4;
+}
+
+.places-container {
+  width: 50vw;
+  display: flex;
+  flex-direction: column;
+  gap: 2em;
+  padding: 1em;
+}
+
+.places {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+  div {
+    padding: 1em;
+    border-radius: 0.275rem;
+    border: 1px solid;
+  }
 }

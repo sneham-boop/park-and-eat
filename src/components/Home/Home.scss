@@ -4,9 +4,27 @@
   padding: 0 1em;
   background-color: $white;
   height: auto;
+  background-color: rgba(0, 0, 0, 0);
+  height: 90vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  .intro {
+    padding-bottom: 10rem;
+  }
   h3 {
     margin: 0;
-    font-size: $font-size-h4;
-    font-weight: $thin;
+    color: $white;
+    font-weight: $bold;
+    font-size: $font-size-h2;
+    text-align: center;
+  }
+  p {
+    margin: 0;
+    color: $white;
+    font-size: $font-size-p-lg;
+    font-weight: $extra-thin;
+    text-align: center;
   }
 }

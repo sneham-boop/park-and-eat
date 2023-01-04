@@ -9,8 +9,18 @@ html {
 
 body {
   width: 100vw;
-  // background-color: $gray;
+  // background-color: $black;
   font-family: $font-family-default;
   padding: 0;
   margin: 0;
+  .video {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    min-width: 100%;
+    min-height: 100%;
+    z-index: -1;
+    // opacity: 0.9;
+    filter: brightness(20%);
+  }
 }

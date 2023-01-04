@@ -3,13 +3,17 @@
 .nav {
   width: 100vw;
   display: flex;
+  flex-direction: row;
   justify-content: space-between;
   align-items: center;
   background-color: rgba(0,0,0,0);
-  color: $white;
   padding: 0.5em 1em;
   .logo {
     font-size: $font-size-p-m;
     font-weight: $extra-bold;
+    color: $white;
+  }
+  a {
+    text-decoration: none;
   }
 }

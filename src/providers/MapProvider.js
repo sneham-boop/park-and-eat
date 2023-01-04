@@ -26,7 +26,7 @@ export default function MapProvider(props) {
     return function cleanup() {
       getCurrentLocation();
     };
-  }, [setLocalStorage]);
+  });
 
   const handleApiLoaded = (map, maps) => {
     setMapAPILoaded(true);
@@ -38,6 +38,7 @@ export default function MapProvider(props) {
     map,
     mapAPI,
     mapAPILoaded,
+    location
   };
   return (
     <mapContext.Provider value={data}>
@@ -47,7 +48,7 @@ export default function MapProvider(props) {
           libraries: ["places"],
         }}
         defaultCenter={defaultLocation}
-        center={location}
+        // center={location}
         zoom={10}
         yesIWantToUseGoogleMapApiInternals
         onGoogleApiLoaded={({ map, maps }) => handleApiLoaded(map, maps)}
@@ -55,7 +56,6 @@ export default function MapProvider(props) {
       >
         {props.children}
       </GoogleMapReact>
-      {/* {props.children} */}
     </mapContext.Provider>
   );
 }

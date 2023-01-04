@@ -1,7 +1,6 @@
 import React, { useContext } from "react";
 import "./Home.scss";
 import { userContext } from "../../providers/UserProvider";
-import vid from "../../docs/restaurant-video.mp4";
 
 export default function Home() {
   const { user } = useContext(userContext);
@@ -15,9 +14,6 @@ export default function Home() {
           <p>Please log in to continue.</p>
         </div>
       )}
-      <video autoPlay muted loop className="video">
-        <source src={vid} type="video/mp4" />
-      </video>
     </section>
   );
 }

@@ -4,9 +4,31 @@
   padding: 0 1em;
   background-color: $white;
   height: auto;
+  background-color: rgba(0, 0, 0, 0);
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  .video {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    min-width: 100%;
+    min-height: 100%;
+    z-index: -1;
+    // opacity: 0.9;
+    filter: brightness(20%);
+  }
   h3 {
     margin: 0;
-    font-size: $font-size-h4;
+    color: $white;
+    font-weight: $bold;
+    font-size: $font-size-h2;
+  }
+  p {
+    margin: 0;
+    color: $white;
+    font-size: $font-size-p-lg;
     font-weight: $thin;
   }
 }

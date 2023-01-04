@@ -11,7 +11,7 @@ export default function Home() {
       {user ? (
         <h3>Welcome, {user.firstname}!</h3>
       ) : (
-        <div>
+        <div className="intro">
           <h3>Welcome to Park&EAT! </h3>
           <p>Please log in to continue.</p>
         </div>

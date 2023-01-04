@@ -5,10 +5,11 @@
   background-color: $white;
   height: auto;
   background-color: rgba(0, 0, 0, 0);
-  height: 100vh;
+  height: 90vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-items: center;
   .video {
     position: fixed;
     right: 0;
@@ -19,16 +20,21 @@
     // opacity: 0.9;
     filter: brightness(20%);
   }
+  .intro {
+    padding-bottom: 15rem;
+  }
   h3 {
     margin: 0;
     color: $white;
     font-weight: $bold;
     font-size: $font-size-h2;
+    text-align: center;
   }
   p {
     margin: 0;
     color: $white;
     font-size: $font-size-p-lg;
     font-weight: $thin;
+    text-align: center;
   }
 }

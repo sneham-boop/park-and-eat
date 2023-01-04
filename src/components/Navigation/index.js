@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import Button from "../Button";
 import Logo from "./Logo";
 import { authContext } from "../../providers/AuthProvider";
+import { Link } from "react-router-dom";
 import "./Navigation.scss";
 
 export default function Navigation(props) {
@@ -13,7 +14,15 @@ export default function Navigation(props) {
 
   return (
     <nav className="nav">
-      <Logo />
+      <Link to="/home">
+        <Logo />
+      </Link>
+      <Link to="/home">
+        <Button btnText={"Home"} />
+      </Link>
+      <Link to="/map">
+        <Button btnText={"Map"} />
+      </Link>
       <Button btnText={btnText} onClick={handleClick} />
     </nav>
   );

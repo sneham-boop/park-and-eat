@@ -17,13 +17,15 @@ export default function Navigation(props) {
       <Link to="/home">
         <Logo />
       </Link>
-      <Link to="/home">
-        <Button btnText={"Home"} />
-      </Link>
-      <Link to="/map">
-        <Button btnText={"Map"} />
-      </Link>
-      <Button btnText={btnText} onClick={handleClick} />
+      <div className="nav-right-group">
+        <Link to="/home">
+          <Button btnText={"Home"} />
+        </Link>
+        <Link to="/map">
+          <Button btnText={"Map"} />
+        </Link>
+        <Button btnText={btnText} onClick={handleClick} />
+      </div>
     </nav>
   );
 }

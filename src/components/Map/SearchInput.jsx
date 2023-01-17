@@ -83,7 +83,7 @@ const SearchInput = ({ searchRef, setPlacesSearched, triggerSearch, setNewCenter
       );
       inp.bindTo("bounds", map);
     }
-  });
+  },[]);
 
   return <></>;
 };

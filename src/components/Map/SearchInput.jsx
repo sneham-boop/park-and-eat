@@ -1,22 +1,30 @@
-import React, { useEffect, useContext, useRef } from "react";
+import React, { useContext, useRef, useState } from "react";
 import { mapContext } from "../../providers/MapProvider";
 
-const SearchInput = ({ searchRef, setPlacesSearched, triggerSearch, setNewCenter }) => {
+const SearchInput = ({
+  searchRef,
+  setPlacesSearched,
+  triggerSearch,
+  setNewCenter,
+}) => {
   const { map, mapAPI } = useContext(mapContext);
+  const [markers, setMarkers] = useState([]);
   let searchInputGoogleMap = useRef(null);
 
   const onPlacesChanged = (map, maps, markers, searchBox) => {
     const places = searchBox.getPlaces();
+    
     if (places.length === 0) {
       return;
     }
-
+    // console.log(places);
     // Clear out the old markers.
     setPlacesSearched(() => [...places]);
     markers.forEach((marker) => {
       marker.setMap(null);
     });
-    markers = [];
+    // markers = [];
+    setMarkers([]);
 
     // For each place, get the icon, name and location.
     const bounds = new maps.LatLngBounds();
@@ -25,10 +33,6 @@ const SearchInput = ({ searchRef, setPlacesSearched, triggerSearch, setNewCenter
         console.log("Returned place contains no geometry");
         return;
       }
-      // setPlacesSearched((prev) => {
-      //   const oldPlaces = [...prev];
-      //   return [...oldPlaces, place];
-      // });
       const icon = {
         url: place.icon,
         size: new maps.Size(71, 71),
@@ -38,14 +42,25 @@ const SearchInput = ({ searchRef, setPlacesSearched, triggerSearch, setNewCenter
       };
 
       // Create a marker for each place.
-      markers.push(
-        new maps.Marker({
-          map,
-          icon,
-          title: place.name,
-          position: place.geometry.location,
-        })
-      );
+      // markers.push(
+      //   new maps.Marker({
+      //     map,
+      //     icon,
+      //     title: place.name,
+      //     position: place.geometry.location,
+      //   })
+      // );
+      setMarkers((prev) => {
+        return [
+          ...prev,
+          new maps.Marker({
+            map,
+            icon,
+            title: place.name,
+            position: place.geometry.location,
+          }),
+        ];
+      });
       setNewCenter({
         lat: place.geometry.location.lat(),
         lng: place.geometry.location.lng(),
@@ -62,14 +77,14 @@ const SearchInput = ({ searchRef, setPlacesSearched, triggerSearch, setNewCenter
   };
 
   const input = searchRef.current;
-  let markers = [];
+
   const options = {
     types: ["park"],
     componentRestrictions: { country: "ca" },
     fields: ["name", "formatted_address", "geometry"],
   };
 
-  useEffect(() => {
+  // useEffect(() => {
     if (mapAPI) {
       let inp = searchInputGoogleMap.current;
       inp = new mapAPI.places.SearchBox(input, options);
@@ -83,7 +98,7 @@ const SearchInput = ({ searchRef, setPlacesSearched, triggerSearch, setNewCenter
       );
       inp.bindTo("bounds", map);
     }
-  },[]);
+  // }, []);
 
   return <></>;
 };

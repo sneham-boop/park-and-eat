@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from "react";
-// import Markers from "./Markers";
+import Markers from "./Markers";
 import Button from "../Button";
 import "./Map.scss";
 import ShowPlaces from "./ShowPlaces";
@@ -51,6 +51,7 @@ export default function Map() {
             triggerSearch={searchButton}
             setNewCenter={setNewCenter}
           />
+          <Markers description="Me" lat={getLocalStorage("location").lat} lng={getLocalStorage("location").lng}/>
         </GoogleMap>
       </div>
     </>

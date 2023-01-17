@@ -1,19 +1,18 @@
 import React, { useEffect, useContext, useRef } from "react";
 import { mapContext } from "../../providers/MapProvider";
 
-const SearchInput = ({ searchRef, setPlacesSearched, triggerSearch }) => {
+const SearchInput = ({ searchRef, setPlacesSearched, triggerSearch, setNewCenter }) => {
   const { map, mapAPI } = useContext(mapContext);
   let searchInputGoogleMap = useRef(null);
-
 
   const onPlacesChanged = (map, maps, markers, searchBox) => {
     const places = searchBox.getPlaces();
     if (places.length === 0) {
       return;
     }
-    
+
     // Clear out the old markers.
-    setPlacesSearched(()=>[...places]);
+    setPlacesSearched(() => [...places]);
     markers.forEach((marker) => {
       marker.setMap(null);
     });
@@ -47,6 +46,11 @@ const SearchInput = ({ searchRef, setPlacesSearched, triggerSearch }) => {
           position: place.geometry.location,
         })
       );
+      setNewCenter({
+        lat: place.geometry.location.lat(),
+        lng: place.geometry.location.lng(),
+      });
+
       if (place.geometry.viewport) {
         // Only geocodes have viewport.
         bounds.union(place.geometry.viewport);
@@ -75,7 +79,7 @@ const SearchInput = ({ searchRef, setPlacesSearched, triggerSearch }) => {
       //   inp.setBounds(map.getBounds());
       // });
       inp.addListener("places_changed", () =>
-          onPlacesChanged(map, mapAPI, markers, inp)
+        onPlacesChanged(map, mapAPI, markers, inp)
       );
       inp.bindTo("bounds", map);
     }

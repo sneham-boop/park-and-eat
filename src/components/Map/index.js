@@ -10,6 +10,7 @@ import useLocalStorage from "../../hooks/useLocalStorage";
 export default function Map() {
   const { getLocalStorage } = useLocalStorage();
   const [placesSearched, setPlacesSearched] = useState([]);
+  const [newCenter, setNewCenter] = useState(getLocalStorage("location"));
   const [searchButton, setSearchButton] = useState(false);
   const searchInputRef = useRef(null);
   const btnText = "Search";
@@ -43,11 +44,12 @@ export default function Map() {
           </div>
         </div>
 
-        <GoogleMap>
+        <GoogleMap center={newCenter} >
           <SearchInput
             searchRef={searchInputRef}
             setPlacesSearched={setPlacesSearched}
             triggerSearch={searchButton}
+            setNewCenter={setNewCenter}
           />
         </GoogleMap>
       </div>

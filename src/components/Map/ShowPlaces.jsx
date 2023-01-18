@@ -12,12 +12,12 @@ const ShowPlaces = ({ places }) => {
       return <Place key={id} place={placeInfo} image={image} />;
     });
   };
-
+// console.log(places)
   return (
     <div className="places-container">
       <h3>We found these for you!</h3>
       <div className="places" ref={divDisplayResults}>
-        {places && displayPlaces(places)}
+        {/* {places && displayPlaces(places)} */}
       </div>
     </div>
   );

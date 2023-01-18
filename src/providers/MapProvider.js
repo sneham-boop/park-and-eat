@@ -49,7 +49,7 @@ export default function MapProvider(props) {
         }}
         defaultCenter={defaultLocation}
         center={location}
-        zoom={10}
+        zoom={15}
         yesIWantToUseGoogleMapApiInternals
         onGoogleApiLoaded={({ map, maps }) => handleApiLoaded(map, maps)}
         {...props}

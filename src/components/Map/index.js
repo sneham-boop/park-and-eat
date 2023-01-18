@@ -15,12 +15,12 @@ export default function Map() {
   const searchInputRef = useRef(null);
   const btnText = "Search";
   const handleClick = () => {
-    console.log("Searching!");
+    // console.log("Searching!");
     setSearchButton(true);
   };
 
   useEffect(() => {
-    console.log("We found these.", placesSearched);
+    // console.log("We found these.", placesSearched);
     setSearchButton(false);
   }, [placesSearched]);
 
@@ -40,7 +40,7 @@ export default function Map() {
               <Button btnText={btnText} onClick={handleClick} />
             </div>
 
-            {searchButton && <ShowPlaces places={placesSearched} />}
+            {<ShowPlaces places={placesSearched} />}
           </div>
         </div>
 

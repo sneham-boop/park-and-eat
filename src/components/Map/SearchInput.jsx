@@ -41,15 +41,6 @@ const SearchInput = ({
         scaledSize: new maps.Size(25, 25),
       };
 
-      // Create a marker for each place.
-      // markers.push(
-      //   new maps.Marker({
-      //     map,
-      //     icon,
-      //     title: place.name,
-      //     position: place.geometry.location,
-      //   })
-      // );
       setMarkers((prev) => {
         return [
           ...prev,

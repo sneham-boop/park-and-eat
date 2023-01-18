@@ -7,9 +7,9 @@ const ShowPlaces = ({ places }) => {
   const displayPlaces = (places) => {
     return places.map((place, id) => {
       const { formatted_address, rating, name, photos } = place;
-      const placeInfo = { num:id+1, formatted_address, rating, name };
-      const image = photos[0];
-      return <Place key={id} place={placeInfo} image={image}/>;
+      const placeInfo = { num: id + 1, formatted_address, rating, name };
+      let image = photos ? photos.slice(0)[0] : null;
+      return <Place key={id} place={placeInfo} image={image} />;
     });
   };
 
